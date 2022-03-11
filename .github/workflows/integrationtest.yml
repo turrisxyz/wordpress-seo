@@ -53,10 +53,14 @@ jobs:
             wp_version: 'latest'
             multisite: true
 
+          - php_version: '8.2'
+            wp_version: 'trunk'
+            multisite: true
+
     name: "Integration Test: PHP ${{ matrix.php_version }} | WP ${{ matrix.wp_version }}${{ matrix.multisite == true && ' (+ ms)' || '' }}"
 
     # Allow builds to fail on as-of-yet unreleased WordPress versions.
-    continue-on-error: ${{ matrix.wp_version == 'trunk' }}
+    continue-on-error: ${{ matrix.wp_version == 'trunk' || matrix.php_version == '8.2' }}
 
     services:
       mysql:
@@ -127,13 +131,22 @@ jobs:
         run: composer remove --dev phpunit/phpunit --no-update --no-scripts
 
       - name: "Install type 1: install Composer dependencies - WP 5.9 or higher"
-        if: ${{ steps.composer_toggle.outputs.TYPE == '1' }}
+        if: ${{ steps.composer_toggle.outputs.TYPE == '1' && matrix.php_version != '8.2' }}
         uses: ramsey/composer-install@v2
         with:
           # Force a `composer update` run.
           dependency-versions: "highest"
           # But make it selective.
           composer-options: "yoast/wp-test-utils --with-dependencies --no-scripts"
+
+      - name: "Install type 1: install Composer dependencies - WP 5.9 or higher (ignore platform reqs)"
+        if: ${{ steps.composer_toggle.outputs.TYPE == '1' && matrix.php_version == '8.2' }}
+        uses: ramsey/composer-install@v2
+        with:
+          # Force a `composer update` run.
+          dependency-versions: "highest"
+          # But make it selective.
+          composer-options: "yoast/wp-test-utils --with-dependencies --no-scripts --ignore-platform-req=php"
 
       ### Install type 2.
       - name: "Install type 2: conditionally require a higher PHPUnit version"
