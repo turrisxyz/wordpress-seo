@@ -68,6 +68,8 @@ class Orm_Test extends TestCase {
 	 * Test_insert_many_throws_on_not_new_model.
 	 *
 	 * @covers ::insert_many
+	 *
+	 * @requires PHP < 8.1
 	 */
 	public function test_insert_many_throws_on_not_new_model() {
 		// Arrange.

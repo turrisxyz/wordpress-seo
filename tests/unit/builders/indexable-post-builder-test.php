@@ -217,6 +217,8 @@ class Indexable_Post_Builder_Test extends TestCase {
 	 * @dataProvider provider_build
 	 * @covers ::build
 	 *
+	 * @requires PHP < 8.1
+	 *
 	 * @param array $postmeta        The postmeta of the post.
 	 * @param array $expected_result The expected indexable values.
 	 */
@@ -423,6 +425,8 @@ class Indexable_Post_Builder_Test extends TestCase {
 	 * Tests if the build function returns false when the options_helper->is_post_indexable criterium is not met.
 	 *
 	 * @covers ::build
+	 *
+	 * @requires PHP < 8.1
 	 */
 	public function test_build_post_not_indexable() {
 		$this->indexable = Mockery::mock( Indexable::class );
@@ -439,6 +443,8 @@ class Indexable_Post_Builder_Test extends TestCase {
 	 * Tests find_alternative_image when the post is an attachment.
 	 *
 	 * @covers ::find_alternative_image
+	 *
+	 * @requires PHP < 8.1
 	 */
 	public function test_find_alternative_image_from_attachment() {
 		$this->indexable      = Mockery::mock( Indexable::class );
@@ -470,6 +476,8 @@ class Indexable_Post_Builder_Test extends TestCase {
 	 * Tests find_alternative_image when a featured image is set on the post.
 	 *
 	 * @covers ::find_alternative_image
+	 *
+	 * @requires PHP < 8.1
 	 */
 	public function test_find_alternative_image_from_featured_image() {
 		$this->indexable      = Mockery::mock( Indexable::class );
@@ -502,6 +510,8 @@ class Indexable_Post_Builder_Test extends TestCase {
 	 * but not a featured image.
 	 *
 	 * @covers ::find_alternative_image
+	 *
+	 * @requires PHP < 8.1
 	 */
 	public function test_find_alternative_image_from_gallery() {
 		$this->indexable      = Mockery::mock( Indexable::class );
@@ -550,6 +560,8 @@ class Indexable_Post_Builder_Test extends TestCase {
 	 * but not a featured image.
 	 *
 	 * @covers ::find_alternative_image
+	 *
+	 * @requires PHP < 8.1
 	 */
 	public function test_find_alternative_image_from_post_content() {
 		$this->indexable      = Mockery::mock( Indexable::class );
@@ -602,6 +614,8 @@ class Indexable_Post_Builder_Test extends TestCase {
 	 * but not a featured image.
 	 *
 	 * @covers ::find_alternative_image
+	 *
+	 * @requires PHP < 8.1
 	 */
 	public function test_find_alternative_image_no_image() {
 		$this->indexable      = Mockery::mock( Indexable::class );

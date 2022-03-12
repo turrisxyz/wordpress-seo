@@ -25,6 +25,8 @@ use Yoast\WP\SEO\Values\Open_Graph\Images;
  * @group generators
  * @group open-graph
  * @group open-graph-image
+ *
+ * @requires PHP < 8.1
  */
 class Open_Graph_Image_Generator_Test extends TestCase {
 

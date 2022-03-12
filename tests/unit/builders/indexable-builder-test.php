@@ -32,6 +32,8 @@ use Yoast\WP\SEO\Tests\Unit\TestCase;
  *
  * @coversDefaultClass \Yoast\WP\SEO\Builders\Indexable_Builder
  * @covers \Yoast\WP\SEO\Builders\Indexable_Builder
+ *
+ * @requires PHP < 8.1
  */
 class Indexable_Builder_Test extends TestCase {
 
