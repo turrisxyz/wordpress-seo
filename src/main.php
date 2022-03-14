@@ -2,6 +2,7 @@
 
 namespace Yoast\WP\SEO;
 
+use AllowDynamicProperties;
 use Yoast\WP\Lib\Abstract_Main;
 use Yoast\WP\SEO\Dependency_Injection\Container_Compiler;
 use Yoast\WP\SEO\Generated\Cached_Container;
@@ -22,6 +23,7 @@ if ( ! \defined( 'WPSEO_VERSION' ) ) {
  * @property Meta_Surface    $meta         The meta surface.
  * @property Helpers_Surface $helpers      The helpers surface.
  */
+#[AllowDynamicProperties]
 class Main extends Abstract_Main {
 
 	/**
