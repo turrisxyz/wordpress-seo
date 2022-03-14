@@ -2,6 +2,7 @@
 
 namespace Yoast\WP\SEO\Models;
 
+use AllowDynamicProperties;
 use Yoast\WP\Lib\Model;
 
 /**
@@ -81,6 +82,7 @@ use Yoast\WP\Lib\Model;
  *
  * @property int    $version
  */
+#[AllowDynamicProperties]
 class Indexable extends Model {
 
 	/**
