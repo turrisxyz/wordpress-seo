@@ -99,6 +99,10 @@ class WPSEO_Metabox_Test extends WPSEO_UnitTestCase {
 	 * @covers WPSEO_Metabox::save_postdata
 	 */
 	public function test_save_postdata() {
+		if ( \PHP_VERSION_ID >= 80200 ) {
+			$this->markTestSkipped( 'PHP 8.2: Test will fail on WP Core/dynamic property on WP_Term. Wait for upstream fix.' );
+		}
+
 		// Create and go to post.
 		$post_id = $this->factory->post->create();
 		$this->go_to( get_permalink( $post_id ) );
@@ -174,6 +178,10 @@ class WPSEO_Metabox_Test extends WPSEO_UnitTestCase {
 	 * @param string $message        The message to show when test fails.
 	 */
 	public function test_save_postdata_for_separate_fields( $field_name, $field_value, $expected_value, $message ) {
+		if ( \PHP_VERSION_ID >= 80200 ) {
+			$this->markTestSkipped( 'PHP 8.2: Test will fail on WP Core/dynamic property on WP_Term. Wait for upstream fix.' );
+		}
+
 		// Create and go to post.
 		$post_id = $this->factory->post->create();
 		$this->go_to( get_permalink( $post_id ) );

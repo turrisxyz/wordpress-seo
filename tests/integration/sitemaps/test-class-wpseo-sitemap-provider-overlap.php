@@ -58,6 +58,10 @@ class WPSEO_Sitemap_Provider_Overlap_Test extends WPSEO_UnitTestCase {
 	 * Makes sure the private taxonomy "author" does not override the "Author" sitemap.
 	 */
 	public function test_private_taxonomy_author_overlap() {
+		if ( \PHP_VERSION_ID >= 80200 ) {
+			$this->markTestSkipped( 'PHP 8.2: Test will fail on WP Core/dynamic property on WP_Term. Wait for upstream fix.' );
+		}
+
 		// Create a user with a post.
 		$user_id = $this->factory->user->create( [ 'role' => 'author' ] );
 		$this->factory->post->create_many( 1, [ 'post_author' => $user_id ] );

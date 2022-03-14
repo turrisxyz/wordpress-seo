@@ -363,6 +363,10 @@ class WPSEO_Database_Proxy_Test extends WPSEO_UnitTestCase {
 	 * @covers WPSEO_Database_Proxy::create_table
 	 */
 	public function test_create_table() {
+		if ( \PHP_VERSION_ID >= 80200 ) {
+			$this->markTestSkipped( 'PHP 8.2: Test will fail on WP Core/dynamic property on wpdb. Wait for upstream fix.' );
+		}
+
 		global $wpdb;
 
 		$proxy_table_name = self::$proxy_table_name . '_duplicate';
@@ -411,6 +415,10 @@ class WPSEO_Database_Proxy_Test extends WPSEO_UnitTestCase {
 	 * @covers WPSEO_Database_Proxy::get_table_name
 	 */
 	public function test_get_table_name_global() {
+		if ( \PHP_VERSION_ID >= 80200 ) {
+			$this->markTestSkipped( 'PHP 8.2: Test will fail on WP Core/dynamic property on wpdb. Wait for upstream fix.' );
+		}
+
 		global $wpdb;
 
 		$proxy_table_name = self::$proxy_table_name . '_duplicate';
@@ -428,6 +436,10 @@ class WPSEO_Database_Proxy_Test extends WPSEO_UnitTestCase {
 	 * @covers WPSEO_Database_Proxy::register_table
 	 */
 	public function test_register_table() {
+		if ( \PHP_VERSION_ID >= 80200 ) {
+			$this->markTestSkipped( 'PHP 8.2: Test will fail on WP Core/dynamic property on wpdb. Wait for upstream fix.' );
+		}
+
 		global $wpdb;
 
 		$proxy_table_name = self::$proxy_table_name . '_duplicate';
@@ -442,6 +454,10 @@ class WPSEO_Database_Proxy_Test extends WPSEO_UnitTestCase {
 	 * @covers WPSEO_Database_Proxy::register_table
 	 */
 	public function test_register_table_global() {
+		if ( \PHP_VERSION_ID >= 80200 ) {
+			$this->markTestSkipped( 'PHP 8.2: Test will fail on WP Core/dynamic property on wpdb. Wait for upstream fix.' );
+		}
+
 		global $wpdb;
 
 		$proxy_table_name = self::$proxy_table_name . '_duplicate';

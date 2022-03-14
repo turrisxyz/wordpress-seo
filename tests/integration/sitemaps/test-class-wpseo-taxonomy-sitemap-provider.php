@@ -34,6 +34,9 @@ class WPSEO_Taxonomy_Sitemap_Provider_Test extends WPSEO_UnitTestCase {
 	 * @covers WPSEO_Taxonomy_Sitemap_Provider::get_index_links
 	 */
 	public function test_get_index_links() {
+		if ( \PHP_VERSION_ID >= 80200 ) {
+			$this->markTestSkipped( 'PHP 8.2: Test will fail on WP Core/dynamic property on WP_Term. Wait for upstream fix.' );
+		}
 
 		$index_links = self::$class_instance->get_index_links( 1 );
 		$this->assertEmpty( $index_links );
