@@ -2,6 +2,7 @@
 
 namespace Yoast\WP\SEO\Context;
 
+use AllowDynamicProperties;
 use WP_Block_Parser_Block;
 use WP_Post;
 use WPSEO_Replace_Vars;
@@ -51,6 +52,7 @@ use Yoast\WP\SEO\Repositories\Indexable_Repository;
  * @property int          $main_image_id
  * @property string       $main_image_url
  */
+#[AllowDynamicProperties]
 class Meta_Tags_Context extends Abstract_Presentation {
 
 	/**
