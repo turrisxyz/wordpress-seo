@@ -2,6 +2,7 @@
 
 namespace Yoast\WP\SEO\Surfaces;
 
+use AllowDynamicProperties;
 use Yoast\WP\SEO\Helpers;
 use YoastSEO_Vendor\Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -45,6 +46,7 @@ use YoastSEO_Vendor\Symfony\Component\DependencyInjection\ContainerInterface;
  * @property Helpers\Woocommerce_Helper  $woocommerce
  * @property Helpers\Wordpress_Helper    $wordpress
  */
+#[AllowDynamicProperties]
 class Helpers_Surface {
 
 	/**
