@@ -2,12 +2,14 @@
 
 namespace Yoast\WP\SEO\Helpers\Schema;
 
+use AllowDynamicProperties;
 use Yoast\WP\SEO\Config\Schema_IDs;
 use Yoast\WP\SEO\Context\Meta_Tags_Context;
 
 /**
  * Schema utility functions.
  */
+#[AllowDynamicProperties]
 class ID_Helper {
 
 	/**
