@@ -2,6 +2,7 @@
 
 namespace Yoast\WP\SEO\Presentations;
 
+use AllowDynamicProperties;
 use Yoast\WP\SEO\Context\Meta_Tags_Context;
 use Yoast\WP\SEO\Generators\Breadcrumbs_Generator;
 use Yoast\WP\SEO\Generators\Open_Graph_Image_Generator;
@@ -52,6 +53,7 @@ use Yoast\WP\SEO\Models\Indexable;
  * @property array  $breadcrumbs
  * @property int    $estimated_reading_time_minutes
  */
+#[AllowDynamicProperties]
 class Indexable_Presentation extends Abstract_Presentation {
 
 	/**
