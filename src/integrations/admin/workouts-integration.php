@@ -479,6 +479,10 @@ class Workouts_Integration implements Integration_Interface {
 	private function is_configuration_workout_finished() {
 		$workouts_option = $this->options_helper->get( 'workouts_data', [] );
 
+		if ( $workouts_option === [] ) {
+			return false;
+		}
+
 		return \count( $workouts_option['configuration']['finishedSteps'] ) === 5;
 	}
 
