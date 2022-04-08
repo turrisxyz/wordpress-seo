@@ -43,7 +43,12 @@ class Estimated_Reading_Time_Conditional implements Conditional {
 	public function is_met() {
 		// Check if we are in our Elementor ajax request (for saving).
 		if ( \wp_doing_ajax() ) {
-			$post_action = $this->input_helper->filter( \INPUT_POST, 'action', \FILTER_SANITIZE_STRING );
+			$post_action = null;
+			// phpcs:disable WordPress.Security.NonceVerification -- Conditional would break site when non met.
+			if ( isset( $_POST['action'] ) ) {
+				$post_action = \sanitize_text_field( \wp_unslash( $_POST['action'] ) );
+			}
+			// phpcs:enable
 			if ( $post_action === 'wpseo_elementor_save' ) {
 				return true;
 			}
@@ -54,7 +59,13 @@ class Estimated_Reading_Time_Conditional implements Conditional {
 		}
 
 		// We don't support Estimated Reading Time on the attachment post type.
-		$post_id = (int) $this->input_helper->filter( \INPUT_GET, 'post', \FILTER_SANITIZE_NUMBER_INT );
+		$post_id = 0;
+		// phpcs:disable WordPress.Security.NonceVerification -- Conditional would break site when non met.
+		if ( isset( $_GET['post'] ) ) {
+			$post_id = (int) \sanitize_text_field( \wp_unslash( $_GET['post'] ) );
+		}
+		// phpcs:enable
+
 		if ( \get_post_type( $post_id ) === 'attachment' ) {
 			return false;
 		}

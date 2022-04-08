@@ -55,10 +55,7 @@ class Estimated_Reading_Time_Conditional_Test extends TestCase {
 		Monkey\Functions\expect( 'wp_doing_ajax' )->andReturn( true );
 
 		// We are saving in Elementor with Ajax.
-		$this->input_helper
-			->expects( 'filter' )
-			->with( \INPUT_POST, 'action', \FILTER_SANITIZE_STRING )
-			->andReturn( 'wpseo_elementor_save' );
+		$_POST['action'] = 'wpseo_elementor_save';
 
 		$this->assertEquals( true, $this->instance->is_met() );
 	}
@@ -75,10 +72,7 @@ class Estimated_Reading_Time_Conditional_Test extends TestCase {
 		Monkey\Functions\expect( 'wp_doing_ajax' )->andReturn( true );
 
 		// The Ajax action is not for saving Elementor.
-		$this->input_helper
-			->expects( 'filter' )
-			->with( \INPUT_POST, 'action', \FILTER_SANITIZE_STRING )
-			->andReturn( 'some_other_value' );
+		$_POST['action'] = 'some_other_value';
 
 		// We are not on a post according to the post conditional.
 		$this->post_conditional
@@ -105,10 +99,7 @@ class Estimated_Reading_Time_Conditional_Test extends TestCase {
 			->andReturn( true );
 
 		// Returns the post id.
-		$this->input_helper
-			->expects( 'filter' )
-			->with( \INPUT_GET, 'post', \FILTER_SANITIZE_NUMBER_INT )
-			->andReturn( '1' );
+		$_GET['post'] = '1';
 
 		// Returns the attachment post type.
 		Monkey\Functions\expect( 'get_post_type' )
@@ -134,10 +125,7 @@ class Estimated_Reading_Time_Conditional_Test extends TestCase {
 			->andReturn( true );
 
 		// Returns the post id.
-		$this->input_helper
-			->expects( 'filter' )
-			->with( \INPUT_GET, 'post', \FILTER_SANITIZE_NUMBER_INT )
-			->andReturn( '1' );
+		$_GET['post'] = '1';
 
 		// Returns post type.
 		Monkey\Functions\expect( 'get_post_type' )

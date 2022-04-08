@@ -19,13 +19,23 @@ class Elementor_Edit_Conditional implements Conditional {
 		global $pagenow;
 
 		// Check if we are on an Elementor edit page.
-		$get_action = \filter_input( \INPUT_GET, 'action', \FILTER_SANITIZE_STRING );
+		$get_action = null;
+		// phpcs:disable WordPress.Security.NonceVerification -- Conditional would break site when non met.
+		if ( isset( $_GET['action'] ) ) {
+			$get_action = \sanitize_text_field( \wp_unslash( $_GET['action'] ) );
+		}
+		// phpcs:enable
 		if ( $pagenow === 'post.php' && $get_action === 'elementor' ) {
 			return true;
 		}
 
 		// Check if we are in our Elementor ajax request.
-		$post_action = \filter_input( \INPUT_POST, 'action', \FILTER_SANITIZE_STRING );
+		$post_action = null;
+		// phpcs:disable WordPress.Security.NonceVerification -- Conditional would break site when non met.
+		if ( isset( $_POST['action'] ) ) {
+			$post_action = \sanitize_text_field( \wp_unslash( $_POST['action'] ) );
+		}
+		// phpcs:enable
 		return \wp_doing_ajax() && $post_action === 'wpseo_elementor_save';
 	}
 }
