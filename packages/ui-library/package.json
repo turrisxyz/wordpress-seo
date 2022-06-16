@@ -9,7 +9,8 @@
   ],
   "exports": {
     ".": "./build/index.js",
-    "./hooks": "./build/hooks/index.js"
+    "./hooks": "./build/hooks/index.js",
+    "./constants": "./build/constants/index.js"
   },
   "author": "Team Yoast <support@yoast.com>",
   "license": "GPL-3.0",
