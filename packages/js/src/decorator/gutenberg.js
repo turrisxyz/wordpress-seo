@@ -7,6 +7,8 @@ import {
 import "@wordpress/annotations";
 import { create } from "@wordpress/rich-text";
 import { select, dispatch } from "@wordpress/data";
+import { tinyMCEDecorator } from "./tinyMCE";
+import Paper from "yoastseo/src/values/Paper.js";
 
 const ANNOTATION_SOURCE = "yoast";
 
@@ -87,6 +89,23 @@ function scheduleAnnotationQueueApplication() {
 		setTimeout( applyAnnotationQueueItem, 150 );
 	}
 }
+
+/**
+ * Create decorators for each editor and applies marks to each editor
+ *
+ * @param {tinyMCE.Editor} editor The editors to apply the marks to.
+ * @param {Paper} paper The paper for which the marks have been generated.
+ * @param {Array.<Mark>} marks The marks to show in the editor.
+ *
+ * @returns {void}
+ */
+
+// Get all registered TinyMCE editors on the page.
+const editors = tinyMCE.editors;
+// Create decorators for all editors.
+const decorators = editors.map( editor => tinyMCEDecorator( editor ) );
+// Use decorators to apply marks for to each editor.
+decorators.forEach( decorator => decorator( paper, marks ) );
 
 /**
  * Returns whether or not annotations are available in Gutenberg.
