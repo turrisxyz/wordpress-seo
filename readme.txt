@@ -238,6 +238,40 @@ Your question has most likely been answered on our help center: [yoast.com/help/
 
 == Changelog ==
 
+= 19.0 =
+Release Date: June 28th, 2022
+
+
+Enhancements:
+
+* Added support for `webp` images for OpenGraph output.
+* Adds a new filter `wpseo_change_home_url` that allows changing the URL the Ryte integration checks, to allow for more versatile hosting setups.
+* Adds WordProof to timestamp the privacy policy and terms and conditions pages.
+* By adding a `meta author` tag we're making sure LinkedIn picks up the name of a post author properly.
+* By adding the name of the article author to the `author` section of the `Article` schema piece, we make Pinterest detect as it doesn't traverse the graph properly.
+* Enables sorting on the SEO and readability score columns on the post overview page.
+* Improves sentence recognition for German by disregarding ordinal numbers as potential sentence boundaries.
+* Improves the content analysis by excluding blockquote HTML elements.
+* Improves the sentence recognition by disregarding abbreviations as potential sentence boundaries.
+* Improves the sentence recognition by disregarding initials as potential sentence boundaries.
+* Improves the text analysis by not always splitting on ellipsis &#8230; regardless of whether the next sentence has a valid beginning or not. This previously could also result in score discrepancies when switching to Elementor.
+* Improves the text analysis by not splitting sentences on semicolon ;.
+* Improves the text analysis by supporting sentence detection for declarative sentences in quotation marks.
+* We've changed the `@id` of the main schema `WebPage` node to be just the permalink for the current page, for interoperability with other plugins.
+
+Bugfixes:
+
+* Fixes a bug in the Wincher integration table on posts and terms where the focus keyphrase was not marked with an asterisk.
+* Fixes a bug that would cause the First-time configuration to crash when completing indexation with the Yoast admin bar menu hidden.
+* Fixes a bug where filtering the OpenGraph and Twitter image to a URL containing ampersands would lead to encoding issues.
+* Fixes a bug where HTML tags in the `og:description` meta tag would be displayed encoded instead of being removed completely.
+* Fixes a bug where the sitemap `image:loc` URLs containing ampersands would lead to encoding issues.
+
+Other:
+
+* Adds a disabled keyphrase distribution check to the SEO analysis.
+* Renames the 'Keyphrase in title' SEO assessment to 'Keyphrase in SEO title'.
+
 = 19.2 =
 Release Date: June 28th, 2022
 
@@ -268,29 +302,6 @@ Bugfixes:
 Other:
 
 * Renames the 'Keyphrase in title' SEO assessment to 'Keyphrase in SEO title'.
-
-= 19.1 =
-Release Date: June 14th, 2022
-
-Yoast SEO 19.1 is out today! In this release, we've rolled out some improvements that make the content and SEO analyses more flexible. We've also expanded our range of crawl settings in Premium. Read more about what's new in Yoast SEO 19.1 in [our release post in English](https://yoa.st/release-14-6-22) or [our release post in Spanish](https://yoa.st/release-14-6-22-spanish)!
-
-Enhancements:
-
-* Improves text analysis by splitting text on full-stop only when the next sentence is preceded by a whitespace.
-* Prompts users to set up their site in order to take advantage of all SEO features.
-
-Bugfixes:
-
-* Fixes a bug where the "Check links to this URL" option on admin bar menu would lead to an error page on setups with home URL different from the site URL. Props to @suascat.
-* Fixes a bug where the network setting for the crawl cleanup feature would default to `Disable` when the super admin saved settings before upgrading/installing Premium.
-* Fixes a bug which caused the Spanish transition word `para ilustrar` to not be recognized by the transition words assessment.
-
-Other:
-
-* Adds an informative error message to the steps of the First-time configuration should an error occur.
-* Adds dismissable weekly webinar promo banners to Yoast settings pages & block/Elementor editor sidebars.
-* Adds new disabled toggles to the Crawl settings tab in the General page.
-* Improves handling of OAuth errors in the Wincher integration and clears refresh tokens that seem to be invalid.
 
 = Earlier versions =
 For the changelog of earlier versions, please refer to [the changelog on yoast.com](https://yoa.st/yoast-seo-changelog).
